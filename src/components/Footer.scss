@@ -1,0 +1,92 @@
+@use '../styles/variables' as *;
+
+.footer {
+  padding: $spacing-5xl;
+  border-top: 1px solid var(--border-light);
+  transition: border-color 0.3s;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-3xl $spacing-xl;
+  }
+
+  &__container {
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: $spacing-4xl;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-2xl;
+    }
+  }
+
+  &__brand {
+    @media (max-width: $breakpoint-md) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__logo {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-base;
+    background: $gradient-primary-reverse;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    span {
+      -webkit-text-fill-color: var(--text);
+      background: none;
+      -webkit-background-clip: unset;
+      transition: -webkit-text-fill-color 0.3s;
+    }
+  }
+
+  &__brand-text {
+    font-size: $font-size-base - 1;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 280px;
+  }
+
+  &__column-title {
+    font-size: $font-size-base - 1;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    margin-bottom: $spacing-lg;
+    transition: color 0.3s;
+  }
+
+  &__link {
+    display: block;
+    font-size: $font-size-base - 1;
+    color: var(--footer-link);
+    margin-bottom: $spacing-md;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-cyan;
+    }
+  }
+
+  &__bottom {
+    max-width: $breakpoint-xl;
+    margin: $spacing-3xl auto 0;
+    padding-top: $spacing-xl;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-sm;
+    color: var(--text-faint);
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      gap: $spacing-sm;
+      text-align: center;
+    }
+  }
+}

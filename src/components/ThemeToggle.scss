@@ -1,0 +1,45 @@
+@use '../styles/variables' as *;
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &__track {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    border-radius: $radius-pill;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+
+  &__thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: $radius-circle;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__icon {
+    position: absolute;
+    font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    line-height: 1;
+
+    &--sun {
+      left: 6px;
+    }
+
+    &--moon {
+      right: 6px;
+    }
+  }
+}

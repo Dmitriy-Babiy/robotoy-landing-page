@@ -1,0 +1,67 @@
+@use '../styles/variables' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: $spacing-lg $spacing-5xl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.3s, border-color 0.3s;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-base $spacing-xl;
+  }
+
+  &__logo {
+    font-size: 28px;
+    font-weight: $font-weight-bold;
+    background: $gradient-primary-reverse;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+
+    span {
+      -webkit-text-fill-color: var(--text);
+      background: none;
+      -webkit-background-clip: unset;
+      transition: -webkit-text-fill-color 0.3s;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: $spacing-2xl + 4px;
+    align-items: center;
+
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__link {
+    font-size: $font-size-base;
+    color: var(--text-muted);
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-cyan;
+    }
+  }
+
+  &__cta {
+    padding: 10px $spacing-xl;
+    background: $gradient-primary;
+    border-radius: $radius-pill;
+    font-size: $font-size-base - 1;
+    font-weight: $font-weight-semibold;
+    color: #fff;
+    cursor: pointer;
+  }
+}

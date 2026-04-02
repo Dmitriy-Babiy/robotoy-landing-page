@@ -1,0 +1,88 @@
+@use 'reset';
+@use 'variables' as *;
+
+// =============================================
+// Light theme by default
+// =============================================
+:root {
+  @include theme-light;
+}
+
+// Dark theme via data-attribute
+[data-theme='dark'] {
+  @include theme-dark;
+}
+
+// =============================================
+// Base styles
+// =============================================
+body {
+  font-family: $font-family;
+  background: var(--bg);
+  color: var(--text-secondary);
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+// =============================================
+// Shared section styles
+// =============================================
+.section-label {
+  font-size: $font-size-base - 1;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: $color-cyan;
+  text-align: center;
+  margin-bottom: $spacing-base;
+
+  &--purple {
+    color: $color-purple;
+  }
+}
+
+.section-title {
+  font-size: $font-size-6xl;
+  font-weight: $font-weight-bold;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: $spacing-5xl + 4px;
+  letter-spacing: -1px;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+// =============================================
+// Shared button styles
+// =============================================
+.btn {
+  padding: $spacing-base $spacing-2xl + 4px;
+  border-radius: $radius-pill;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  display: inline-block;
+  transition: box-shadow 0.3s;
+
+  &--primary {
+    background: $gradient-primary;
+    color: #fff;
+  }
+
+  &--secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $color-cyan;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@use '../styles/variables' as *;
+
+.cta {
+  padding: $spacing-7xl $spacing-5xl;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-6xl $spacing-xl;
+  }
+
+  &__glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: $radius-circle;
+    filter: blur(150px);
+    animation: ctaPulse 5s ease-in-out infinite;
+
+    &--left {
+      background: var(--glow-purple);
+      left: -200px;
+      top: -200px;
+    }
+
+    &--right {
+      background: var(--glow-cyan);
+      right: -200px;
+      bottom: -200px;
+      animation-delay: 2.5s;
+    }
+  }
+
+  &__card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--bg-cta-card);
+    border: 1px solid var(--border);
+    border-radius: $radius-3xl;
+    padding: $spacing-6xl $spacing-5xl;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--shadow-card);
+    transition: background 0.3s, border-color 0.3s;
+
+    @media (max-width: $breakpoint-md) {
+      padding: $spacing-4xl $spacing-xl;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+    color: var(--text);
+    margin-bottom: $spacing-lg;
+    letter-spacing: -1px;
+    transition: color 0.3s;
+
+    span {
+      background: $gradient-primary-reverse;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 28px;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-lg;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto $spacing-3xl;
+  }
+
+  &__form {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $spacing-base $spacing-xl;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: $radius-pill;
+    color: var(--text);
+    font-size: $font-size-md;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+
+    &::placeholder {
+      color: var(--text-faint);
+    }
+
+    &:focus {
+      border-color: $color-cyan;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    padding: $spacing-base $spacing-2xl + 4px;
+    background: $gradient-primary;
+    border: none;
+    border-radius: $radius-pill;
+    color: #fff;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  &__note {
+    margin-top: $spacing-lg;
+    font-size: $font-size-sm;
+    color: var(--text-faint);
+  }
+}
+
+@keyframes ctaPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}

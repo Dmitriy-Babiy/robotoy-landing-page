@@ -1,0 +1,188 @@
+// =============================================
+// Typography
+// =============================================
+$font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+$font-size-xs: 12px;
+$font-size-sm: 13px;
+$font-size-base: 15px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 22px;
+$font-size-3xl: 24px;
+$font-size-4xl: 32px;
+$font-size-5xl: 42px;
+$font-size-6xl: 48px;
+$font-size-7xl: 72px;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// =============================================
+// Spacing
+// =============================================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-base: 16px;
+$spacing-lg: 20px;
+$spacing-xl: 24px;
+$spacing-2xl: 32px;
+$spacing-3xl: 40px;
+$spacing-4xl: 48px;
+$spacing-5xl: 60px;
+$spacing-6xl: 80px;
+$spacing-7xl: 120px;
+
+// =============================================
+// Border Radius
+// =============================================
+$radius-sm: 3px;
+$radius-md: 6px;
+$radius-lg: 14px;
+$radius-xl: 16px;
+$radius-2xl: 24px;
+$radius-3xl: 32px;
+$radius-pill: 50px;
+$radius-circle: 50%;
+
+// =============================================
+// Breakpoints
+// =============================================
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+
+// =============================================
+// Accent / Brand Colors (theme-agnostic)
+// =============================================
+$color-cyan: #00d4ff;
+$color-purple: #7b2ff7;
+$color-purple-light: #c084fc;
+$color-orange: #ffaa00;
+$color-green: #00a86b;
+$color-red: #ff6b00;
+
+$gradient-primary: linear-gradient(135deg, $color-purple, $color-cyan);
+$gradient-primary-reverse: linear-gradient(135deg, $color-cyan, $color-purple);
+
+// =============================================
+// Light Theme (default)
+// =============================================
+$light-bg: #ffffff;
+$light-bg-secondary: #f7f8fa;
+$light-bg-card: #ffffff;
+$light-bg-card-hover: #f0f4ff;
+$light-bg-input: #f2f3f7;
+$light-bg-cta-card: linear-gradient(145deg, #f0f0ff, #e8f4ff);
+
+$light-text: #1a1a2e;
+$light-text-secondary: #555570;
+$light-text-muted: #8888a0;
+$light-text-faint: #aaaabc;
+
+$light-border: #e2e4ea;
+$light-border-light: #eef0f5;
+
+$light-navbar-bg: rgba(255, 255, 255, 0.85);
+$light-glow-cyan: rgba(0, 212, 255, 0.08);
+$light-glow-purple: rgba(123, 47, 247, 0.08);
+
+$light-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+$light-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+
+// =============================================
+// Dark Theme
+// =============================================
+$dark-bg: #0a0a0f;
+$dark-bg-secondary: rgba(255, 255, 255, 0.01);
+$dark-bg-card: rgba(255, 255, 255, 0.03);
+$dark-bg-card-hover: rgba(255, 255, 255, 0.05);
+$dark-bg-input: rgba(255, 255, 255, 0.06);
+$dark-bg-cta-card: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.7));
+
+$dark-text: #ffffff;
+$dark-text-secondary: rgba(255, 255, 255, 0.6);
+$dark-text-muted: rgba(255, 255, 255, 0.5);
+$dark-text-faint: rgba(255, 255, 255, 0.3);
+
+$dark-border: rgba(255, 255, 255, 0.06);
+$dark-border-light: rgba(255, 255, 255, 0.05);
+
+$dark-navbar-bg: rgba(10, 10, 15, 0.8);
+$dark-glow-cyan: rgba(0, 212, 255, 0.15);
+$dark-glow-purple: rgba(123, 47, 247, 0.15);
+
+$dark-shadow: none;
+$dark-shadow-card: none;
+
+// =============================================
+// CSS Custom Properties (for runtime theming)
+// =============================================
+@mixin theme-light {
+  --bg: #{$light-bg};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-card: #{$light-bg-card};
+  --bg-card-hover: #{$light-bg-card-hover};
+  --bg-input: #{$light-bg-input};
+  --bg-cta-card: #{$light-bg-cta-card};
+
+  --text: #{$light-text};
+  --text-secondary: #{$light-text-secondary};
+  --text-muted: #{$light-text-muted};
+  --text-faint: #{$light-text-faint};
+
+  --border: #{$light-border};
+  --border-light: #{$light-border-light};
+
+  --navbar-bg: #{$light-navbar-bg};
+  --glow-cyan: #{$light-glow-cyan};
+  --glow-purple: #{$light-glow-purple};
+
+  --shadow: #{$light-shadow};
+  --shadow-card: #{$light-shadow-card};
+
+  --card-bg-gradient: linear-gradient(145deg, rgba(240, 240, 255, 0.8), rgba(232, 244, 255, 0.6));
+  --orbit-border: rgba(0, 180, 230, 0.35);
+  --course-card-bg: linear-gradient(145deg, #f5f5ff, #eef4ff);
+  --badge-bg: rgba(22, 33, 62, 0.05);
+  --badge-border: rgba(22, 33, 62, 0.08);
+  --floating-badge-bg: rgba(255, 255, 255, 0.9);
+  --footer-link: #{$light-text-muted};
+}
+
+@mixin theme-dark {
+  --bg: #{$dark-bg};
+  --bg-secondary: #{$dark-bg-secondary};
+  --bg-card: #{$dark-bg-card};
+  --bg-card-hover: #{$dark-bg-card-hover};
+  --bg-input: #{$dark-bg-input};
+  --bg-cta-card: #{$dark-bg-cta-card};
+
+  --text: #{$dark-text};
+  --text-secondary: #{$dark-text-secondary};
+  --text-muted: #{$dark-text-muted};
+  --text-faint: #{$dark-text-faint};
+
+  --border: #{$dark-border};
+  --border-light: #{$dark-border-light};
+
+  --navbar-bg: #{$dark-navbar-bg};
+  --glow-cyan: #{$dark-glow-cyan};
+  --glow-purple: #{$dark-glow-purple};
+
+  --shadow: #{$dark-shadow};
+  --shadow-card: #{$dark-shadow-card};
+
+  --card-bg-gradient: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.6));
+  --orbit-border: rgba(0, 212, 255, 0.15);
+  --course-card-bg: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.6));
+  --badge-bg: rgba(22, 33, 62, 0.9);
+  --badge-border: rgba(255, 255, 255, 0.08);
+  --floating-badge-bg: rgba(22, 33, 62, 0.9);
+  --footer-link: #{$dark-text-faint};
+}

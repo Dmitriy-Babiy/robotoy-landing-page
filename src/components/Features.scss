@@ -1,0 +1,63 @@
+@use '../styles/variables' as *;
+
+.features {
+  padding: $spacing-7xl $spacing-5xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-6xl $spacing-xl;
+  }
+
+  &__container {
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-2xl;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: $radius-2xl;
+    padding: $spacing-3xl $spacing-2xl;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    box-shadow: var(--shadow-card);
+
+    &:hover {
+      border-color: rgba($color-cyan, 0.2);
+      background: var(--bg-card-hover);
+    }
+  }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: $radius-xl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $spacing-xl;
+    font-size: 28px;
+  }
+
+  &__card-title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text);
+    margin-bottom: $spacing-md;
+    transition: color 0.3s;
+  }
+
+  &__card-text {
+    font-size: $font-size-base;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+}

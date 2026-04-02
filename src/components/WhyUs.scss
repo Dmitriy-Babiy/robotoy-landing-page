@@ -1,0 +1,161 @@
+@use '../styles/variables' as *;
+
+.whyus {
+  padding: $spacing-7xl $spacing-5xl;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-6xl $spacing-xl;
+  }
+
+  &__container {
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-6xl;
+    align-items: center;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-4xl;
+    }
+  }
+
+  &__step {
+    display: flex;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-3xl;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__step-num {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-lg;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+  }
+
+  &__step-content {
+    h3 {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      color: var(--text);
+      margin-bottom: $spacing-sm;
+      transition: color 0.3s;
+    }
+
+    p {
+      font-size: $font-size-base;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__circle-graphic {
+    position: relative;
+    width: 380px;
+    height: 380px;
+
+    @media (max-width: $breakpoint-md) {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &__spin-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px dashed rgba($color-cyan, 0.3);
+    border-radius: $radius-circle;
+    animation: spinRing 30s linear infinite;
+
+    [data-theme='dark'] & {
+      border-color: rgba($color-cyan, 0.1);
+    }
+
+    &--2 {
+      inset: 40px;
+      border-color: rgba($color-purple, 0.3);
+
+      [data-theme='dark'] & {
+        border-color: rgba($color-purple, 0.1);
+      }
+      animation-duration: 20s;
+      animation-direction: reverse;
+    }
+  }
+
+  &__center-circle {
+    position: absolute;
+    inset: 80px;
+    border-radius: $radius-circle;
+    background: linear-gradient(135deg, rgba($color-purple, 0.15), rgba($color-cyan, 0.15));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__center-text {
+    text-align: center;
+
+    strong {
+      display: block;
+      font-size: $font-size-5xl;
+      font-weight: $font-weight-bold;
+      background: $gradient-primary-reverse;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    span {
+      font-size: $font-size-base - 1;
+      color: var(--text-muted);
+    }
+  }
+
+  &__floating-badge {
+    position: absolute;
+    padding: $spacing-md $spacing-lg;
+    background: var(--floating-badge-bg);
+    border: 1px solid var(--border);
+    border-radius: $radius-xl;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: $font-size-base - 1;
+    color: var(--text);
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  }
+
+  &__badge-emoji {
+    font-size: $font-size-xl;
+  }
+}
+
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

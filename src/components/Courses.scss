@@ -1,0 +1,126 @@
+@use '../styles/variables' as *;
+
+.courses {
+  padding: $spacing-7xl $spacing-5xl;
+  background: var(--bg-secondary);
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-6xl $spacing-xl;
+  }
+
+  &__container {
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-2xl;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background: var(--course-card-bg);
+    border: 1px solid var(--border);
+    border-radius: $radius-2xl;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  &__card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    animation: shimmer 3s linear infinite;
+  }
+
+  &__card-image {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, var(--bg));
+    }
+  }
+
+  &__card-body {
+    padding: 28px $spacing-2xl $spacing-2xl;
+  }
+
+  &__age-tag {
+    display: inline-block;
+    padding: $spacing-xs $spacing-base - 2;
+    border-radius: $radius-pill;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-base;
+  }
+
+  &__card-title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text);
+    margin-bottom: $spacing-md;
+    transition: color 0.3s;
+  }
+
+  &__card-text {
+    font-size: $font-size-base;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: $spacing-xl;
+  }
+
+  &__card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $spacing-lg;
+    border-top: 1px solid var(--border);
+  }
+
+  &__price {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: var(--text);
+    transition: color 0.3s;
+
+    small {
+      font-size: $font-size-base - 1;
+      font-weight: $font-weight-regular;
+      color: var(--text-faint);
+    }
+  }
+
+  &__enroll-btn {
+    padding: 10px $spacing-xl;
+    border-radius: $radius-pill;
+    font-size: $font-size-base - 1;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    background: $gradient-primary;
+    color: #fff;
+    display: inline-block;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
