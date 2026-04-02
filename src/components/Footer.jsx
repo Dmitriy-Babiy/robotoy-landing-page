@@ -29,10 +29,10 @@ export default function Footer() {
         </div>
         <div className="footer__column">
           <h4 className="footer__column-title">Contact</h4>
-          <a href="#" className="footer__link">hello@robotoy.com</a>
-          <a href="#" className="footer__link">+1 (555) 123-4567</a>
-          <a href="#" className="footer__link">Instagram</a>
-          <a href="#" className="footer__link">YouTube</a>
+          <a href="mailto:hello@robotoy.com" className="footer__link">hello@robotoy.com</a>
+          <a href="tel:+15551234567" className="footer__link">+1 (555) 123-4567</a>
+          <a href="#" className="footer__link" aria-label="Instagram">Instagram</a>
+          <a href="#" className="footer__link" aria-label="YouTube">YouTube</a>
         </div>
       </div>
       <div className="footer__bottom">

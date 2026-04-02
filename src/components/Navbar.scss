@@ -63,5 +63,143 @@
     font-weight: $font-weight-semibold;
     color: #fff;
     cursor: pointer;
+    border: none;
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+
+  &__mobile-actions {
+    display: none;
+    align-items: center;
+    gap: $spacing-md;
+
+    @media (max-width: $breakpoint-md) {
+      display: flex;
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    position: relative;
+    z-index: 1001;
+
+    @media (max-width: $breakpoint-md) {
+      display: flex;
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    &--active {
+      span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+// Mobile menu — rendered via portal to body
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2xl;
+    background: var(--bg);
+    padding: $spacing-5xl $spacing-xl;
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-base;
+    right: $spacing-xl;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+
+      &:first-child {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      &:last-child {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
+
+  &__link {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text);
+    transition: color 0.3s;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-cyan;
+    }
+  }
+
+  &__cta {
+    margin-top: $spacing-lg;
+    padding: 14px $spacing-3xl;
+    background: $gradient-primary;
+    border-radius: $radius-pill;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
   }
 }
