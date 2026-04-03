@@ -1,42 +1,17 @@
 import { motion } from 'motion/react'
+import { useLang } from '../context/LanguageContext'
 import './WhyUs.scss'
 
-const steps = [
-  {
-    num: '01',
-    title: 'Expert Instructors',
-    text: 'Our teachers are engineers and programmers with real industry experience and a passion for teaching kids.',
-    color: '#00d4ff',
-    bg: 'rgba(0, 212, 255, 0.1)',
-    border: 'rgba(0, 212, 255, 0.2)',
-  },
-  {
-    num: '02',
-    title: 'Modern Equipment',
-    text: 'We use Arduino, Raspberry Pi, LEGO Mindstorms, and custom 3D-printed parts. No toy kits — real tools.',
-    color: '#7b2ff7',
-    bg: 'rgba(123, 47, 247, 0.15)',
-    border: 'rgba(123, 47, 247, 0.3)',
-  },
-  {
-    num: '03',
-    title: 'Project-Based Learning',
-    text: 'Every course ends with a showcase project. Students present their work to parents and peers.',
-    color: '#ffaa00',
-    bg: 'rgba(255, 170, 0, 0.15)',
-    border: 'rgba(255, 170, 0, 0.3)',
-  },
-  {
-    num: '04',
-    title: 'Flexible Schedule',
-    text: 'Weekday evenings and weekends. Online and in-person options available for every age group.',
-    color: '#00d4ff',
-    bg: 'rgba(0, 212, 255, 0.1)',
-    border: 'rgba(0, 212, 255, 0.2)',
-  },
+const STEP_KEYS = [
+  { key: '1', num: '01', color: '#00d4ff', bg: 'rgba(0, 212, 255, 0.1)', border: 'rgba(0, 212, 255, 0.2)' },
+  { key: '2', num: '02', color: '#7b2ff7', bg: 'rgba(123, 47, 247, 0.15)', border: 'rgba(123, 47, 247, 0.3)' },
+  { key: '3', num: '03', color: '#ffaa00', bg: 'rgba(255, 170, 0, 0.15)', border: 'rgba(255, 170, 0, 0.3)' },
+  { key: '4', num: '04', color: '#00d4ff', bg: 'rgba(0, 212, 255, 0.1)', border: 'rgba(0, 212, 255, 0.2)' },
 ]
 
 export default function WhyUs() {
+  const { t } = useLang()
+
   return (
     <section className="whyus" id="why-us">
       <div className="whyus__container">
@@ -46,7 +21,7 @@ export default function WhyUs() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Why Robotoy
+          {t('whyus.label')}
         </motion.p>
         <motion.h2
           className="section-title"
@@ -55,11 +30,11 @@ export default function WhyUs() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          What Makes Us Different
+          {t('whyus.title')}
         </motion.h2>
         <div className="whyus__layout">
           <div className="whyus__left">
-            {steps.map((s, i) => (
+            {STEP_KEYS.map((s, i) => (
               <motion.div
                 key={s.num}
                 className="whyus__step"
@@ -75,8 +50,8 @@ export default function WhyUs() {
                   {s.num}
                 </div>
                 <div className="whyus__step-content">
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
+                  <h3>{t(`whyus.${s.key}.title`)}</h3>
+                  <p>{t(`whyus.${s.key}.text`)}</p>
                 </div>
               </motion.div>
             ))}
@@ -94,32 +69,47 @@ export default function WhyUs() {
               <div className="whyus__center-circle">
                 <div className="whyus__center-text">
                   <strong>8+</strong>
-                  <span>Years of<br />Teaching</span>
+                  <span>{t('whyus.years')}<br />{t('whyus.teaching')}</span>
                 </div>
               </div>
               <motion.div
                 className="whyus__floating-badge"
-                style={{ top: -10, right: 20 }}
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
+                style={{ top: -10, right: 30 }}
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: 'mirror',
+                  ease: 'easeInOut',
+                }}
               >
-                <span className="whyus__badge-emoji">🏅</span> 120+ Awards Won
+                <span className="whyus__badge-emoji">🏅</span> {t('whyus.awards')}
               </motion.div>
               <motion.div
                 className="whyus__floating-badge"
                 style={{ bottom: 20, left: -20 }}
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity }}
+                animate={{ y: [0, 8, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: 'mirror',
+                  ease: 'easeInOut',
+                }}
               >
-                <span className="whyus__badge-emoji">🌍</span> 15 Locations
+                <span className="whyus__badge-emoji">🌍</span> {t('whyus.locations')}
               </motion.div>
               <motion.div
                 className="whyus__floating-badge"
                 style={{ bottom: -10, right: -10 }}
                 animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: 'mirror',
+                  ease: 'easeInOut',
+                }}
               >
-                <span className="whyus__badge-emoji">⭐</span> 4.9 Rating
+                <span className="whyus__badge-emoji">⭐</span> {t('whyus.rating')}
               </motion.div>
             </div>
           </motion.div>

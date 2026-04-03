@@ -1,37 +1,20 @@
 import { motion } from 'motion/react'
+import { useLang } from '../context/LanguageContext'
 import './Testimonials.scss'
 
-const testimonials = [
-  {
-    stars: 5,
-    quote:
-      'My son went from playing video games all day to building his own robots. Robotoy completely changed his relationship with technology.',
-    name: 'Sarah M.',
-    role: 'Parent of a 10-year-old',
-    initials: 'SM',
-    color: 'linear-gradient(135deg, #7b2ff7, #00d4ff)',
-  },
-  {
-    stars: 5,
-    quote:
-      'The instructors are incredible. They explain complex concepts in ways that kids actually understand and get excited about.',
-    name: 'David L.',
-    role: 'Parent of twins, age 8',
-    initials: 'DL',
-    color: 'linear-gradient(135deg, #00d4ff, #00a86b)',
-  },
-  {
-    stars: 5,
-    quote:
-      "My daughter won 2nd place at the regional robotics competition after just 6 months at Robotoy. Couldn't be prouder!",
-    name: 'Elena K.',
-    role: 'Parent of a 14-year-old',
-    initials: 'EK',
-    color: 'linear-gradient(135deg, #ffaa00, #ff6b00)',
-  },
+const TESTIMONIAL_KEYS = [
+  { key: '1', initials: 'SM', color: 'linear-gradient(135deg, #7b2ff7, #00d4ff)' },
+  { key: '2', initials: 'DL', color: 'linear-gradient(135deg, #00d4ff, #00a86b)' },
+  { key: '3', initials: 'EK', color: 'linear-gradient(135deg, #ffaa00, #ff6b00)' },
 ]
 
 export default function Testimonials() {
+  const { t, lang } = useLang()
+
+  const initialsMap = {
+    ru: { '1': 'АМ', '2': 'ДЛ', '3': 'ЕК' },
+  }
+
   return (
     <section className="testimonials">
       <div className="testimonials__container">
@@ -41,7 +24,7 @@ export default function Testimonials() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Testimonials
+          {t('testimonials.label')}
         </motion.p>
         <motion.h2
           className="section-title"
@@ -50,12 +33,12 @@ export default function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          What Parents Say
+          {t('testimonials.title')}
         </motion.h2>
         <div className="testimonials__grid">
-          {testimonials.map((t, i) => (
+          {TESTIMONIAL_KEYS.map((item, i) => (
             <motion.div
-              key={t.name}
+              key={item.key}
               className="testimonials__card"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -66,17 +49,17 @@ export default function Testimonials() {
               }}
               whileHover={{ y: -6 }}
             >
-              <div className="testimonials__stars">
-                {'★'.repeat(t.stars)}
-              </div>
-              <p className="testimonials__quote">{t.quote}</p>
+              <div className="testimonials__stars">★★★★★</div>
+              <p className="testimonials__quote">
+                {t(`testimonials.${item.key}.quote`)}
+              </p>
               <div className="testimonials__author">
-                <div className="testimonials__avatar" style={{ background: t.color }}>
-                  {t.initials}
+                <div className="testimonials__avatar" style={{ background: item.color }}>
+                  {initialsMap[lang]?.[item.key] ?? item.initials}
                 </div>
                 <div className="testimonials__author-info">
-                  <strong>{t.name}</strong>
-                  <span>{t.role}</span>
+                  <strong>{t(`testimonials.${item.key}.name`)}</strong>
+                  <span>{t(`testimonials.${item.key}.role`)}</span>
                 </div>
               </div>
             </motion.div>

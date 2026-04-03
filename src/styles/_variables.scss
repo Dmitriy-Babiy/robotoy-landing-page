@@ -99,19 +99,19 @@ $light-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
 // Dark Theme
 // =============================================
 $dark-bg: #0a0a0f;
-$dark-bg-secondary: rgba(255, 255, 255, 0.01);
-$dark-bg-card: rgba(255, 255, 255, 0.03);
-$dark-bg-card-hover: rgba(255, 255, 255, 0.05);
-$dark-bg-input: rgba(255, 255, 255, 0.06);
+$dark-bg-secondary: rgba(255, 255, 255, 0.02);
+$dark-bg-card: rgba(255, 255, 255, 0.06);
+$dark-bg-card-hover: rgba(255, 255, 255, 0.1);
+$dark-bg-input: rgba(255, 255, 255, 0.08);
 $dark-bg-cta-card: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.7));
 
 $dark-text: #ffffff;
-$dark-text-secondary: rgba(255, 255, 255, 0.6);
-$dark-text-muted: rgba(255, 255, 255, 0.5);
-$dark-text-faint: rgba(255, 255, 255, 0.3);
+$dark-text-secondary: rgba(255, 255, 255, 0.7);
+$dark-text-muted: rgba(255, 255, 255, 0.6);
+$dark-text-faint: rgba(255, 255, 255, 0.4);
 
-$dark-border: rgba(255, 255, 255, 0.06);
-$dark-border-light: rgba(255, 255, 255, 0.05);
+$dark-border: rgba(255, 255, 255, 0.1);
+$dark-border-light: rgba(255, 255, 255, 0.07);
 
 $dark-navbar-bg: rgba(10, 10, 15, 0.8);
 $dark-glow-cyan: rgba(0, 212, 255, 0.15);
@@ -180,7 +180,7 @@ $dark-shadow-card: none;
 
   --card-bg-gradient: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.6));
   --orbit-border: rgba(0, 212, 255, 0.15);
-  --course-card-bg: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.6));
+  --course-card-bg: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.85));
   --badge-bg: rgba(22, 33, 62, 0.9);
   --badge-border: rgba(255, 255, 255, 0.08);
   --floating-badge-bg: rgba(22, 33, 62, 0.9);

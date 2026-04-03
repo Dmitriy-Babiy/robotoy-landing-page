@@ -1,46 +1,19 @@
 import { motion } from "motion/react";
+import { useLang } from "../context/LanguageContext";
 import "./Features.scss";
 
-const features = [
-  {
-    icon: "🤖",
-    title: "Hands-On Building",
-    text: "Kids assemble real robots from scratch using professional kits, sensors, and motors. Learning by doing, not just watching.",
-    bg: "rgba(123, 47, 247, 0.15)",
-  },
-  {
-    icon: "💻",
-    title: "Visual Programming",
-    text: "From Scratch blocks to Python — we guide students through programming concepts at their own pace with fun challenges.",
-    bg: "rgba(0, 212, 255, 0.15)",
-  },
-  {
-    icon: "🏆",
-    title: "Competition Ready",
-    text: "Our students compete in national and international robotics championships. Many have won top prizes in WRO and FIRST Lego.",
-    bg: "rgba(255, 170, 0, 0.15)",
-  },
-  {
-    icon: "🧠",
-    title: "AI & Machine Learning",
-    text: "Advanced students explore computer vision, neural networks, and how to teach their robots to recognize and react.",
-    bg: "rgba(0, 212, 255, 0.15)",
-  },
-  {
-    icon: "👥",
-    title: "Small Group Classes",
-    text: "Maximum 8 students per group ensures personal attention. Every child gets help exactly when they need it.",
-    bg: "rgba(123, 47, 247, 0.15)",
-  },
-  {
-    icon: "🎓",
-    title: "Certified Curriculum",
-    text: "Our program is aligned with STEM education standards and provides certificates recognized by leading tech companies.",
-    bg: "rgba(255, 170, 0, 0.15)",
-  },
+const FEATURE_KEYS = [
+  { icon: "🤖", key: "1", bg: "rgba(123, 47, 247, 0.25)" },
+  { icon: "💻", key: "2", bg: "rgba(0, 212, 255, 0.25)" },
+  { icon: "🏆", key: "3", bg: "rgba(255, 170, 0, 0.25)" },
+  { icon: "🧠", key: "4", bg: "rgba(0, 212, 255, 0.25)" },
+  { icon: "👥", key: "5", bg: "rgba(123, 47, 247, 0.25)" },
+  { icon: "🎓", key: "6", bg: "rgba(255, 170, 0, 0.25)" },
 ];
 
 export default function Features() {
+  const { t } = useLang();
+
   return (
     <section className="features" id="about">
       <div className="features__container">
@@ -50,7 +23,7 @@ export default function Features() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          What We Offer
+          {t("features.label")}
         </motion.p>
         <motion.h2
           className="section-title"
@@ -59,12 +32,12 @@ export default function Features() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Everything Kids Need to Thrive in Tech
+          {t("features.title")}
         </motion.h2>
         <div className="features__grid">
-          {features.map((f, i) => (
+          {FEATURE_KEYS.map((f, i) => (
             <motion.div
-              key={f.title}
+              key={f.key}
               className="features__card"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -78,8 +51,12 @@ export default function Features() {
               <div className="features__icon" style={{ background: f.bg }}>
                 {f.icon}
               </div>
-              <h3 className="features__card-title">{f.title}</h3>
-              <p className="features__card-text">{f.text}</p>
+              <h3 className="features__card-title">
+                {t(`features.${f.key}.title`)}
+              </h3>
+              <p className="features__card-text">
+                {t(`features.${f.key}.text`)}
+              </p>
             </motion.div>
           ))}
         </div>

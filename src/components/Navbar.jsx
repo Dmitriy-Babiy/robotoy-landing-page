@@ -1,18 +1,21 @@
 import { useState, useCallback, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'motion/react'
+import { useLang } from '../context/LanguageContext'
 import ThemeToggle from './ThemeToggle'
+import LangToggle from './LangToggle'
 import './Navbar.scss'
 
-const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#courses', label: 'Courses' },
-  { href: '#why-us', label: 'Why Us' },
-  { href: '#contact', label: 'Contact' },
+const NAV_KEYS = [
+  { href: '#about', key: 'nav.about' },
+  { href: '#courses', key: 'nav.courses' },
+  { href: '#why-us', key: 'nav.whyUs' },
+  { href: '#contact', key: 'nav.contact' },
 ]
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { t } = useLang()
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev)
@@ -46,11 +49,12 @@ export default function Navbar() {
         </div>
 
         <div className="navbar__links">
-          {NAV_LINKS.map(({ href, label }) => (
+          {NAV_KEYS.map(({ href, key }) => (
             <a key={href} href={href} className="navbar__link">
-              {label}
+              {t(key)}
             </a>
           ))}
+          <LangToggle />
           <ThemeToggle />
           <motion.a
             href="#contact"
@@ -58,11 +62,12 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Enroll Now
+            {t('nav.enroll')}
           </motion.a>
         </div>
 
         <div className="navbar__mobile-actions">
+          <LangToggle />
           <ThemeToggle />
           <button
             className={`navbar__burger ${isMenuOpen ? 'navbar__burger--active' : ''}`}
@@ -103,7 +108,7 @@ export default function Navbar() {
                   <span />
                   <span />
                 </button>
-                {NAV_LINKS.map(({ href, label }, i) => (
+                {NAV_KEYS.map(({ href, key }, i) => (
                   <motion.a
                     key={href}
                     href={href}
@@ -113,7 +118,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + i * 0.05 }}
                   >
-                    {label}
+                    {t(key)}
                   </motion.a>
                 ))}
                 <motion.a
@@ -122,10 +127,10 @@ export default function Navbar() {
                   onClick={closeMenu}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + NAV_LINKS.length * 0.05 }}
+                  transition={{ delay: 0.1 + NAV_KEYS.length * 0.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Enroll Now
+                  {t('nav.enroll')}
                 </motion.a>
               </motion.div>
             </motion.div>

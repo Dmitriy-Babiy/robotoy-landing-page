@@ -1,7 +1,10 @@
 import { motion } from 'motion/react'
+import { useLang } from '../context/LanguageContext'
 import './Hero.scss'
 
 export default function Hero() {
+  const { t } = useLang()
+
   return (
     <section className="hero">
       <div className="hero__glow hero__glow--blue" />
@@ -15,7 +18,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Enrolling for 2026
+            {t('hero.badge')}
           </motion.div>
 
           <motion.h1
@@ -24,7 +27,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Build the <span>Future</span> with Robotics
+            {t('hero.titleStart')}<span>{t('hero.titleHighlight')}</span>{t('hero.titleEnd')}
           </motion.h1>
 
           <motion.p
@@ -33,9 +36,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Robotoy is where kids aged 6–16 learn to design, build, and program
-            real robots. From beginner circuits to AI-powered machines — we make
-            STEM exciting.
+            {t('hero.subtitle')}
           </motion.p>
 
           <motion.div
@@ -50,7 +51,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Start Learning
+              {t('hero.startLearning')}
             </motion.a>
             <motion.a
               href="#courses"
@@ -58,7 +59,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              View Courses
+              {t('hero.viewCourses')}
             </motion.a>
           </motion.div>
 
@@ -70,15 +71,15 @@ export default function Hero() {
           >
             <div className="hero__stat">
               <strong>2,500+</strong>
-              <span>Students</span>
+              <span>{t('hero.statStudents')}</span>
             </div>
             <div className="hero__stat">
               <strong>50+</strong>
-              <span>Courses</span>
+              <span>{t('hero.statCourses')}</span>
             </div>
             <div className="hero__stat">
               <strong>98%</strong>
-              <span>Satisfaction</span>
+              <span>{t('hero.statSatisfaction')}</span>
             </div>
           </motion.div>
         </div>
@@ -92,18 +93,27 @@ export default function Hero() {
           <div className="hero__robot-container">
             <motion.div
               className="hero__orbit hero__orbit--1"
+              style={{ rotate: 0 }}
               animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
             >
-              <div className="hero__orbit-dot hero__orbit-dot--cyan" style={{ top: 0, left: '50%', marginLeft: -6 }} />
+              <div className="hero__orbit-dot hero__orbit-dot--cyan" style={{ top: 0, left: '50%' }} />
             </motion.div>
             <motion.div
               className="hero__orbit hero__orbit--2"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+              style={{ rotate: 120 }}
+              animate={{ rotate: -240 }}
+              transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
             >
-              <div className="hero__orbit-dot hero__orbit-dot--purple" style={{ bottom: 0, right: 0 }} />
-              <div className="hero__orbit-dot hero__orbit-dot--cyan" style={{ top: '50%', left: 0, marginTop: -6 }} />
+              <div className="hero__orbit-dot hero__orbit-dot--cyan" style={{ top: 0, left: '50%' }} />
+            </motion.div>
+            <motion.div
+              className="hero__orbit hero__orbit--3"
+              style={{ rotate: 240 }}
+              animate={{ rotate: 600 }}
+              transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
+            >
+              <div className="hero__orbit-dot hero__orbit-dot--purple" style={{ top: 0, left: '50%' }} />
             </motion.div>
 
             <div className="hero__robot-svg">

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import { useLang } from '../context/LanguageContext'
 import './CTA.scss'
 
 const INITIAL_FORM = { name: '', email: '', phone: '' }
@@ -8,6 +9,7 @@ export default function CTA() {
   const [formData, setFormData] = useState(INITIAL_FORM)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const { t } = useLang()
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target
@@ -43,11 +45,10 @@ export default function CTA() {
         transition={{ duration: 0.8 }}
       >
         <h2 className="cta__title">
-          Ready to Build the <span>Future</span>?
+          {t('cta.titleStart')}<span>{t('cta.titleHighlight')}</span>{t('cta.titleEnd')}
         </h2>
         <p className="cta__subtitle">
-          Book a free trial lesson and see how your child lights up when their
-          first robot comes alive. No commitment required.
+          {t('cta.subtitle')}
         </p>
 
         <AnimatePresence mode="wait">
@@ -61,11 +62,8 @@ export default function CTA() {
               transition={{ duration: 0.4 }}
             >
               <div className="cta__success-icon">&#10003;</div>
-              <h3 className="cta__success-title">Application Accepted!</h3>
-              <p className="cta__success-text">
-                We've received your request for a free trial lesson. Our team
-                will contact you within 24 hours to schedule a convenient time.
-              </p>
+              <h3 className="cta__success-title">{t('cta.successTitle')}</h3>
+              <p className="cta__success-text">{t('cta.successText')}</p>
             </motion.div>
           ) : (
             <motion.form
@@ -81,7 +79,7 @@ export default function CTA() {
                   type="text"
                   name="name"
                   className="cta__input"
-                  placeholder="Your name"
+                  placeholder={t('cta.name')}
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -91,7 +89,7 @@ export default function CTA() {
                   type="email"
                   name="email"
                   className="cta__input"
-                  placeholder="Email address"
+                  placeholder={t('cta.email')}
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -101,7 +99,7 @@ export default function CTA() {
                   type="tel"
                   name="phone"
                   className="cta__input"
-                  placeholder="Phone number"
+                  placeholder={t('cta.phone')}
                   value={formData.phone}
                   onChange={handleChange}
                   required
@@ -115,15 +113,13 @@ export default function CTA() {
                 whileHover={isSubmitting ? {} : { scale: 1.03 }}
                 whileTap={isSubmitting ? {} : { scale: 0.97 }}
               >
-                {isSubmitting ? 'Sending...' : 'Get Free Trial'}
+                {isSubmitting ? t('cta.sending') : t('cta.submit')}
               </motion.button>
             </motion.form>
           )}
         </AnimatePresence>
 
-        <p className="cta__note">
-          Free trial lesson for new students. Cancel anytime.
-        </p>
+        <p className="cta__note">{t('cta.note')}</p>
       </motion.div>
     </section>
   )

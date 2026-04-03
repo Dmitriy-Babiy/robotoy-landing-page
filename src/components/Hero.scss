@@ -192,22 +192,36 @@
         margin: -160px 0 0 -160px;
       }
     }
+
+    &--3 {
+      width: 560px;
+      height: 560px;
+      margin: -280px 0 0 -280px;
+      border: none;
+
+      @media (max-width: $breakpoint-md) {
+        width: 420px;
+        height: 420px;
+        margin: -210px 0 0 -210px;
+      }
+    }
   }
 
   &__orbit-dot {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: $radius-circle;
+    transform: translate(-50%, -50%);
 
     &--cyan {
-      background: $color-cyan;
-      box-shadow: 0 0 20px $color-cyan;
+      background: #00e5ff;
+      box-shadow: 0 0 24px 4px rgba(0, 229, 255, 0.7);
     }
 
     &--purple {
-      background: $color-purple;
-      box-shadow: 0 0 20px $color-purple;
+      background: #9d5cff;
+      box-shadow: 0 0 24px 4px rgba(157, 92, 255, 0.7);
     }
   }
 

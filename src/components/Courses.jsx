@@ -1,43 +1,40 @@
 import { motion } from 'motion/react'
+import { useLang } from '../context/LanguageContext'
 import './Courses.scss'
 
-const courses = [
+const COURSE_KEYS = [
   {
+    key: '1',
     emoji: '🔧',
-    title: 'Little Engineers',
-    age: '6–8 years',
-    text: 'Introduction to mechanics and simple circuits. Kids build their first moving robots using snap-fit parts.',
     price: '$120',
     color: '#00d4ff',
-    bg: 'linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,100,200,0.2))',
-    tagBg: 'rgba(0, 212, 255, 0.1)',
+    bg: 'linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,100,200,0.35))',
+    tagBg: 'rgba(0, 212, 255, 0.15)',
     glowColor: '#00d4ff',
   },
   {
+    key: '2',
     emoji: '⚡',
-    title: 'Code & Create',
-    age: '9–12 years',
-    text: 'Block-based programming meets real hardware. Students program robots to solve mazes, follow lines, and compete.',
     price: '$160',
     color: '#7b2ff7',
-    bg: 'linear-gradient(135deg, rgba(123,47,247,0.1), rgba(80,20,180,0.2))',
-    tagBg: 'rgba(123, 47, 247, 0.15)',
+    bg: 'linear-gradient(135deg, rgba(123,47,247,0.2), rgba(80,20,180,0.35))',
+    tagBg: 'rgba(123, 47, 247, 0.2)',
     glowColor: '#7b2ff7',
   },
   {
+    key: '3',
     emoji: '🚀',
-    title: 'AI Robotics Lab',
-    age: '13–16 years',
-    text: 'Python, computer vision, and machine learning. Build autonomous robots that see, think, and adapt in real time.',
     price: '$200',
     color: '#ffaa00',
-    bg: 'linear-gradient(135deg, rgba(255,170,0,0.1), rgba(200,100,0,0.2))',
-    tagBg: 'rgba(255, 170, 0, 0.15)',
+    bg: 'linear-gradient(135deg, rgba(255,170,0,0.2), rgba(200,100,0,0.35))',
+    tagBg: 'rgba(255, 170, 0, 0.2)',
     glowColor: '#ffaa00',
   },
 ]
 
 export default function Courses() {
+  const { t } = useLang()
+
   return (
     <section className="courses" id="courses">
       <div className="courses__container">
@@ -47,7 +44,7 @@ export default function Courses() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Our Programs
+          {t('courses.label')}
         </motion.p>
         <motion.h2
           className="section-title"
@@ -56,12 +53,12 @@ export default function Courses() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Choose Your Path
+          {t('courses.title')}
         </motion.h2>
         <div className="courses__grid">
-          {courses.map((c, i) => (
+          {COURSE_KEYS.map((c, i) => (
             <motion.div
-              key={c.title}
+              key={c.key}
               className="courses__card"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -78,13 +75,13 @@ export default function Courses() {
               </div>
               <div className="courses__card-body">
                 <span className="courses__age-tag" style={{ background: c.tagBg, color: c.color }}>
-                  {c.age}
+                  {t(`courses.${c.key}.age`)}
                 </span>
-                <h3 className="courses__card-title">{c.title}</h3>
-                <p className="courses__card-text">{c.text}</p>
+                <h3 className="courses__card-title">{t(`courses.${c.key}.title`)}</h3>
+                <p className="courses__card-text">{t(`courses.${c.key}.text`)}</p>
                 <div className="courses__card-meta">
                   <span className="courses__price">
-                    {c.price} <small>/month</small>
+                    {c.price} <small>{t('courses.month')}</small>
                   </span>
                   <motion.a
                     href="#contact"
@@ -92,7 +89,7 @@ export default function Courses() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Enroll
+                    {t('courses.enroll')}
                   </motion.a>
                 </div>
               </div>
