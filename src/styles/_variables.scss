@@ -88,9 +88,9 @@ $light-text-faint: #aaaabc;
 $light-border: #e2e4ea;
 $light-border-light: #eef0f5;
 
-$light-navbar-bg: rgba(255, 255, 255, 0.85);
-$light-glow-cyan: rgba(0, 212, 255, 0.08);
-$light-glow-purple: rgba(123, 47, 247, 0.08);
+$light-navbar-bg: rgba(255, 255, 255, 0.5);
+$light-glow-cyan: rgba(0, 212, 255, 0.5);
+$light-glow-purple: rgba(123, 47, 247, 0.5);
 
 $light-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 $light-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
@@ -113,9 +113,9 @@ $dark-text-faint: rgba(255, 255, 255, 0.4);
 $dark-border: rgba(255, 255, 255, 0.1);
 $dark-border-light: rgba(255, 255, 255, 0.07);
 
-$dark-navbar-bg: rgba(10, 10, 15, 0.8);
-$dark-glow-cyan: rgba(0, 212, 255, 0.15);
-$dark-glow-purple: rgba(123, 47, 247, 0.15);
+$dark-navbar-bg: rgba(10, 10, 15, 0.5);
+$dark-glow-cyan: rgba(0, 212, 255, 0.5);
+$dark-glow-purple: rgba(123, 47, 247, 0.5);
 
 $dark-shadow: none;
 $dark-shadow-card: none;

@@ -3,7 +3,6 @@
 .cta {
   padding: $spacing-7xl $spacing-5xl;
   position: relative;
-  overflow: hidden;
 
   @media (max-width: $breakpoint-md) {
     padding: $spacing-6xl $spacing-xl;
@@ -11,8 +10,8 @@
 
   &__glow {
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     border-radius: $radius-circle;
     filter: blur(150px);
     animation: ctaPulse 5s ease-in-out infinite;
